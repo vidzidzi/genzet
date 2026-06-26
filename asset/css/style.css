@@ -1,6 +1,5 @@
 /* ================================================================
    STYLE.CSS - Gmail Dot Generator By Vidzidzi
-   Versi Lengkap & Sudah Diperbaiki
    ================================================================ */
 
 /* ===== RESET & GLOBAL ===== */
@@ -373,6 +372,43 @@ code {
     margin-top: 15px;
 }
 
+/* ===== KOLOM AKTIVASI ===== */
+#activationSection .form-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#activationSection .form-group input {
+    flex: 1;
+    min-width: 150px;
+}
+
+#activationResult {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+#activationResult.success {
+    background: #e6f4ea;
+    color: #0d652d;
+    border-left: 4px solid #0d652d;
+}
+
+#activationResult.error {
+    background: #fce8e6;
+    color: #d93025;
+    border-left: 4px solid #d93025;
+}
+
+#activationResult.loading {
+    background: #e8f0fe;
+    color: #1a73e8;
+    border-left: 4px solid #1a73e8;
+}
+
 /* ===== MODAL ===== */
 .modal {
     position: fixed;
@@ -582,6 +618,14 @@ code {
     }
     .modal-content {
         padding: 20px;
+    }
+    #activationSection .form-group {
+        flex-direction: column;
+    }
+    #activationSection .form-group input,
+    #activationSection .form-group button {
+        width: 100%;
+        min-width: unset;
     }
 }
 
