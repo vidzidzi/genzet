@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Dot Generator By Vidzidzi</title>
+    <link rel="stylesheet" href="asset/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📧</text></svg>">
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-brand">
+                <span class="brand-icon">📧</span>
+                <h1>Gmail Dot Generator <span class="brand-by">By Vidzidzi</span></h1>
+            </div>
+            <p class="tagline">Generate Unlimited Gmail Aliases Instantly</p>
+            <nav class="tab-nav">
+                <button class="tab-btn active" data-tab="home">🏠 Home</button>
+                <button class="tab-btn" data-tab="generator">⚡ Generator</button>
+                <button class="tab-btn" data-tab="premium">💎 Premium</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="container">
+
+        <!-- TAB HOME -->
+        <section id="tab-home" class="tab-content active">
+            <div class="card">
+                <h2>What is the Gmail Dot Trick?</h2>
+                <p>The Gmail Dot Trick is a clever technique that leverages a specific feature of Google's email service. Gmail's servers completely ignore any periods (dots) placed in the username part of an email address.</p>
+                <p>For example, if your primary address is <code>yourname@gmail.com</code>, emails sent to <code>your.name@gmail.com</code>, <code>y.o.u.r.n.a.m.e@gmail.com</code> will all arrive in your main inbox.</p>
+                <h3>Common Uses</h3>
+                <ul>
+                    <li><strong>Filtering:</strong> Create powerful filters to organize emails.</li>
+                    <li><strong>Spam Identification:</strong> Discover which service sold your email.</li>
+                    <li><strong>Multiple Accounts:</strong> Register multiple accounts with one inbox.</li>
+                </ul>
+            </div>
+            <div class="card features">
+                <h2>Why Use Our Generator?</h2>
+                <div class="feature-grid">
+                    <div class="feature-item"><h4>⚡ Super Fast</h4><p>Generate millions in seconds.</p></div>
+                    <div class="feature-item"><h4>🔒 Secure</h4><p>Processed locally in your browser.</p></div>
+                    <div class="feature-item"><h4>📦 Bulk</h4><p>Process multiple emails at once.</p></div>
+                    <div class="feature-item"><h4>♾️ Unlimited</h4><p>No limits on variations.</p></div>
+                </div>
+            </div>
+            <div style="text-align:center;margin:30px 0;">
+                <button class="btn-primary btn-large" onclick="switchTab('generator')">Start Generating ➜</button>
+            </div>
+        </section>
+
+        <!-- TAB GENERATOR -->
+        <section id="tab-generator" class="tab-content">
+            <div class="card">
+                <h2>📧 Gmail Dot Generator</h2>
+                <form id="generatorForm">
+                    <div class="form-group">
+                        <label for="username">Username (tanpa @gmail.com):</label>
+                        <input type="text" id="username" placeholder="contoh: johndoe" value="johndoe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="count">Jumlah Variasi:</label>
+                        <input type="number" id="count" value="10" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailList">Atau masukkan banyak email (satu per baris):</label>
+                        <textarea id="emailList" rows="3" placeholder="user1@gmail.com&#10;user2@gmail.com"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary btn-block">⚡ Generate</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>📋 Hasil</h2>
+                <div id="resultInfo" class="info-box"><p>Silakan generate untuk melihat hasil.</p></div>
+                <textarea id="resultArea" readonly></textarea>
+                <div class="action-buttons">
+                    <button id="downloadBtn" class="btn-secondary">⬇ Download .txt</button>
+                    <button id="copyBtn" class="btn-secondary">📋 Salin</button>
+                    <button id="clearBtn" class="btn-danger">🗑️ Kosongkan</button>
+                </div>
+            </div>
+
+            <!-- STATUS PREMIUM -->
+            <div class="card" id="upgradeSection">
+                <h3>🔒 Status Akses</h3>
+                <div id="premiumAccess">
+                    <p><strong>Versi Gratis:</strong> Maksimal 10 hasil per username.</p>
+                    <p>Upgrade ke Premium untuk akses tidak terbatas.</p>
+                    <button id="showOrderBtn" class="btn-premium btn-block">💳 Order Premium - Rp 299.999</button>
+                </div>
+                <div id="premiumStatus" style="display:none;">
+                    <div class="success-message">✅ <strong>Mode Premium Aktif!</strong> Anda dapat menghasilkan variasi tidak terbatas.</div>
+                </div>
+            </div>
+
+            <!-- ===== KOLOM AKTIVASI KODE (SEMBUNYI, MUNCUL SETELAH ORDER) ===== -->
+            <div class="card" id="activationSection" style="display:none; border:2px solid #f9ab00; background:#fffde7;">
+                <h3 style="color:#f9ab00;">🔑 Aktivasi Kode Premium</h3>
+                <p style="font-size:0.95rem;color:#5f6368;">
+                    Masukkan kode premium yang dikirim Admin via WhatsApp untuk aktivasi.
+                </p>
+                <div class="form-group" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                    <input type="text" id="activationCode" placeholder="Masukkan kode 8 karakter" style="flex:2; min-width:200px;">
+                    <input type="text" id="activationPhone" placeholder="No HP pendaftaran" style="flex:1; min-width:150px;">
+                    <input type="text" id="activationName" placeholder="Nama pendaftaran" style="flex:1; min-width:150px;">
+                    <button id="activateBtn" class="btn-premium" style="flex:1; min-width:120px;">🔓 Aktivasi</button>
+                </div>
+                <div id="activationResult" style="margin-top:10px;"></div>
+                <p style="font-size:0.8rem;color:#5f6368;margin-top:8px;">
+                    * Kode premium dikirim admin via WhatsApp setelah pembayaran dikonfirmasi.
+                </p>
+            </div>
+        </section>
+
+        <!-- TAB PREMIUM -->
+        <section id="tab-premium" class="tab-content">
+            <div class="card">
+                <h2>💎 Premium Version</h2>
+                <p>Dapatkan akses tidak terbatas untuk semua fitur generator Gmail Dot Trick.</p>
+                <div style="background:#f1f3f4;padding:20px;border-radius:10px;margin:20px 0;">
+                    <h3>✨ Keuntungan Premium</h3>
+                    <ul>
+                        <li>✅ <strong>Unlimited Variations</strong></li>
+                        <li>✅ <strong>Bulk Processing</strong></li>
+                        <li>✅ <strong>Export CSV</strong></li>
+                        <li>✅ <strong>Prioritas Support</strong></li>
+                        <li>✅ <strong>Tanpa Iklan</strong></li>
+                    </ul>
+                </div>
+                <div style="text-align:center;padding:20px;background:#e8f0fe;border-radius:10px;">
+                    <h3 style="color:#1a73e8;">💰 Harga: Rp 299.999</h3>
+                    <p style="margin:10px 0;">Bayar via DANA, dapatkan kode premium unik.</p>
+                    <button class="btn-premium" onclick="switchTab('generator'); document.getElementById('showOrderBtn').click();">🔓 Order Sekarang</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 <strong>Gmail Dot Generator By Vidzidzi</strong>. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ================================================================ -->
+    <!-- MODAL ORDER PREMIUM -->
+    <!-- ================================================================ -->
+    <div id="orderModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModal">&times;</span>
+            
+            <div class="modal-header">
+                <h2>💳 Order Premium</h2>
+                <p style="color:#5f6368;">Isi data di bawah untuk melakukan order premium.</p>
+            </div>
+
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="orderName">Nama Lengkap:</label>
+                    <input type="text" id="orderName" placeholder="Contoh: John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderPhone">Nomor Whatsapp (aktif):</label>
+                    <input type="tel" id="orderPhone" placeholder="08123456789" required>
+                    <small>* Digunakan untuk kirim kode premium</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderDate">Tanggal Order:</label>
+                    <input type="text" id="orderDate" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Harga:</label>
+                    <input type="text" id="orderPrice" value="Rp 299.999" readonly style="font-weight:bold;color:#1a73e8;">
+                </div>
+
+                <div class="form-group">
+                    <label>Metode Pembayaran:</label>
+                    <div class="payment-methods">
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="qris" checked>
+                            <span class="payment-label">📱 QRIS DANA</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="transfer">
+                            <span class="payment-label">💸 Transfer DANA</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="paymentInfo" class="payment-info">
+                    <div id="qrisInfo">
+                        <p><strong>📱 Scan QRIS DANA di bawah:</strong></p>
+                        <div class="qris-placeholder">
+                            <div style="background:#f1f3f4;padding:20px;border-radius:8px;text-align:center;border:2px dashed #dadce0;">
+                                <span style="font-size:3rem;">📱</span>
+                                <p style="margin-top:5px;font-weight:bold;">QRIS DANA</p>
+                                <p style="font-size:0.8rem;color:#5f6368;">Scan untuk bayar Rp 299.999</p>
+                            </div>
+                        </div>
+                        <p style="margin-top:10px;font-size:0.9rem;">
+                            <strong>Atau transfer ke:</strong><br>
+                            <code>081311083156</code> a.n <strong>Wandi Irawan</strong>
+                        </p>
+                    </div>
+                    <div id="transferInfo" style="display:none;">
+                        <p><strong>💸 Transfer ke nomor DANA berikut:</strong></p>
+                        <div style="background:#202124;padding:15px;border-radius:8px;text-align:center;">
+                            <code style="color:#f9ab00;font-size:1.4rem;background:transparent;">081311083156</code>
+                        </div>
+                        <p style="margin-top:10px;font-size:0.9rem;">
+                            a.n <strong>Wandi Irawan</strong><br>
+                            <span style="color:#5f6368;">* Setelah transfer, klik Kirim Order</span>
+                        </p>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-premium btn-block" id="submitOrderBtn">
+                    📨 Kirim Order via WhatsApp
+                </button>
+            </form>
+
+            <div id="orderResult" style="margin-top:15px;"></div>
+        </div>
+    </div>
+
+    <script src="asset/js/script.js"></script>
+
+</body>
+</html>
